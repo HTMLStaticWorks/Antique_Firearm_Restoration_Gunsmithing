@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans | Antique Firearm Restoration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .accordion-item {
+            background-color: var(--secondary-bg) !important;
+            border: 1px solid var(--accent-gold) !important;
+            margin-bottom: 1rem;
+        }
+        .accordion-button {
+            background-color: var(--secondary-bg) !important;
+            color: var(--text-color) !important;
+            box-shadow: none !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: var(--accent-gold) !important;
+            color: #000000 !important;
+        }
+        .accordion-button::after {
+            filter: sepia(100%) hue-rotate(10deg) saturate(500%); /* Gold tint for the arrow */
+        }
+        .accordion-button:not(.collapsed)::after {
+            filter: brightness(0); /* Black arrow on gold background */
+        }
+        .accordion-body {
+            color: var(--text-color) !important;
+            background-color: var(--secondary-bg) !important;
+        }
+
+        /* Unique Pricing Sections */
+        .value-growth-section {
+            padding: 120px 0;
+            background: var(--primary-bg);
+            overflow: hidden;
+        }
+        .sliding-image-box {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--accent-gold);
+        }
+        .sliding-image-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            transform: translateX(0);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 2;
+        }
+        .value-growth-section.active .sliding-image-box::after {
+            transform: translateX(101%);
+        }
+        .value-growth-section img {
+            transform: scale(1.2);
+            transition: transform 2s ease-out;
+        }
+        .value-growth-section.active img {
+            transform: scale(1);
+        }
+
+        .consultation-bespoke {
+            padding: 150px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/images/expert_james.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        .bespoke-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--accent-gold);
+            padding: 60px;
+            display: inline-block;
+            max-width: 800px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease-out;
+        }
+        .consultation-bespoke.active .bespoke-card {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Theme Fixes for Bespoke Section */
+        [data-theme="light"] .consultation-bespoke,
+        [data-theme="light"] .consultation-bespoke h2,
+        [data-theme="light"] .consultation-bespoke p {
+            color: #ffffff !important;
+        }
+        [data-theme="light"] .bespoke-card {
+            background: rgba(0, 0, 0, 0.75) !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shield-shaded me-2"></i>ANTIQUE ARMS
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="bi bi-list text-white fs-1"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center-mobile">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Classic Home</a></li>
+                            <li><a class="dropdown-item" href="home-2.html">Modern Home</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center justify-content-center mt-3 mt-lg-0 gap-3 flex-column flex-lg-row">
+                    <div class="d-flex gap-2 order-1 order-lg-2">
+                        <button class="btn nav-btn" id="theme-toggle" title="Toggle Theme"><i class="bi bi-sun-fill"></i></button>
+                        <button class="btn nav-btn" id="rtl-toggle" title="Toggle RTL"><i class="bi bi-arrow-left-right"></i></button>
+                    </div>
+                    <a href="login.html" class="btn btn-premium btn-sm px-4 py-2 order-2 order-lg-1">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section" style="height: 45vh; background-image: url('assets/images/pricing_hero.png');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="reveal">Investment & Pricing</h1>
+        </div>
+    </header>
+    
+    <section class="bg-dark-premium py-5">
+        <div class="container py-5">
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="premium-card text-center h-100">
+                        <h5 class="text-gold">Basic Restoration</h5>
+                        <div class="display-4 my-4">$499<small class="fs-6">/starting</small></div>
+                        <ul class="list-unstyled text-muted-text mb-5">
+                            <li class="mb-2">Surface Rust Removal</li>
+                            <li class="mb-2">Mechanical Cleaning</li>
+                            <li class="mb-2">Basic Wood Oiling</li>
+                            <li class="mb-2">Authentication Report</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn btn-outline-premium w-100">Select Plan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="premium-card text-center border-gold h-100" style="transform: scale(1.05); z-index: 1;">
+                        <span class="badge mb-3" style="background-color: var(--accent-gold); color: #000; font-weight: bold; padding: 0.5em 1.2em;">MOST POPULAR</span>
+                        <h5 class="text-gold">Master Showcase</h5>
+                        <div class="display-4 my-4">$1,499<small class="fs-6">/starting</small></div>
+                        <ul class="list-unstyled text-muted-text mb-5">
+                            <li class="mb-2">Full Metal Blueing/Browning</li>
+                            <li class="mb-2">Stock Crack Repair</li>
+                            <li class="mb-2">Period-Correct Re-finishing</li>
+                            <li class="mb-2">Historical Provance Research</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn btn-premium w-100">Select Plan</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="premium-card text-center h-100">
+                        <h5 class="text-gold">Museum Curator</h5>
+                        <div class="display-4 my-4">$2,999<small class="fs-6">/starting</small></div>
+                        <ul class="list-unstyled text-muted-text mb-5">
+                            <li class="mb-2">Intricate Engraving Restoration</li>
+                            <li class="mb-2">Lost Part Recreation</li>
+                            <li class="mb-2">Silver/Gold Wire Inlay</li>
+                            <li class="mb-2">Luxury Display Case Inc.</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn btn-outline-premium w-100">Select Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-growth-section reveal">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="sliding-image-box">
+                        <img src="assets/images/value_increase.png" alt="Antique Value" class="img-fluid w-100">
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h5 class="text-gold mb-3">THE RESTORATION DIVIDEND</h5>
+                    <h2 class="mb-4">Historical Integrity as a Financial Asset</h2>
+                    <p class="text-muted-text">Professional restoration is more than aesthetics; it is a critical investment in the piece's provenance. Certified conservation can increase the auction value of rare firearms by up to 300% by halting decay and restoring mechanical functionality.</p>
+                    <div class="row mt-4 g-4 justify-content-center justify-content-lg-start">
+                        <div class="col-6">
+                            <div class="display-5 text-gold fw-bold">300%</div>
+                            <p class="small text-muted-text">Avg. Value Increase</p>
+                        </div>
+                        <div class="col-6">
+                            <div class="display-5 text-gold fw-bold">Museum</div>
+                            <p class="small text-muted-text">Standard Certification</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="consultation-bespoke reveal">
+        <div class="container">
+            <div class="bespoke-card">
+                <h5 class="text-gold mb-3">BESPOKE SERVICES</h5>
+                <h2 class="display-4 mb-4">White-Glove Estate Consultation</h2>
+                <p class="mb-5 fs-5">For ultra-rare collections and large private estates, we offer on-site consultations and personalized restoration roadmaps. Our master smiths travel globally to evaluate and preserve the world's most significant historical armories.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="contact.html" class="btn btn-premium px-5">Inquire About Bespoke Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-dark-secondary py-5">
+        <div class="container">
+            <div class="mt-5 reveal">
+                <h3 class="text-center mb-5">Frequently Asked Questions</h3>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="accordion accordion-flush" id="faqAccordion">
+                            <div class="accordion-item bg-dark-secondary border border-gold mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-dark-secondary text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        How long does a restoration take?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-muted-text">
+                                        Typically between 4-12 weeks depending on the complexity and parts availability. Master Showcase and Museum Curator projects may take longer due to intensive research and fabrication.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Is the appraisal recognized for insurance?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-muted-text">
+                                        Yes, our appraisals are certified and recognized by all major historical item insurers and auction houses worldwide.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Do you provide a certificate of authenticity?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-muted-text">
+                                        Yes, every major restoration project comes with a detailed Certificate of Authenticity and a digital dossier documenting the work performed and the piece's historical context.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item bg-dark-secondary border border-gold mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-dark-secondary text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        Can you restore firearms with significant damage?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-muted-text">
+                                        In most cases, yes. We specialize in micro-welding and part fabrication to restore integrity to even heavily damaged pieces, provided the restoration doesn't compromise historical value.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 text-center-mobile">
+                <div class="col-lg-4">
+                    <a href="index.html" class="footer-logo">
+                        <i class="bi bi-shield-shaded me-2"></i>ANTIQUE ARMS
+                    </a>
+                    <p class="text-muted-text pe-lg-5">Dedicated to the preservation and restoration of historical firearms. We celebrate the artistry and craftsmanship of the past.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Latest News</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Restoration</a></li>
+                        <li><a href="services.html">Appraisals</a></li>
+                        <li><a href="services.html">Consultation</a></li>
+                        <li><a href="services.html">Consignment</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="text-muted-text">Subscribe to receive historical insights and workshop updates.</p>
+                    <form class="newsletter-form d-flex gap-2">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-premium" type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Antique Firearm Restoration & Gunsmithing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Back to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Insights | Antique Firearm Restoration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .blog-hero {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/vintage_gunsmith_tools_1778094053758.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+        }
+        .blog-card img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .featured-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--accent-gold);
+            overflow: hidden;
+        }
+        .featured-img {
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        /* Unique Section Styles */
+        .artifact-vault {
+            position: relative;
+            background: var(--primary-bg);
+            padding: 120px 0;
+            overflow: hidden;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .artifact-image-container {
+            position: relative;
+            transform: scale(1.1);
+            transition: transform 1.5s ease-out;
+        }
+        .artifact-vault.active .artifact-image-container {
+            transform: scale(1);
+        }
+        .floating-info-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--accent-gold);
+            padding: 50px;
+            position: relative;
+            z-index: 10;
+            margin-left: -100px;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 1s ease-out 0.5s;
+        }
+        [data-theme="dark"] .floating-info-card {
+            background: rgba(29, 29, 29, 0.95);
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+        }
+        .artifact-vault.active .floating-info-card {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        @media (max-width: 991.98px) {
+            .floating-info-card {
+                margin-left: 0;
+                margin-top: -50px;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Header -->
+    <nav class="navbar navbar-expand-xl fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shield-shaded me-2"></i>ANTIQUE ARMS
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="bi bi-list text-white fs-1"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center-mobile">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Classic Home</a></li>
+                            <li><a class="dropdown-item" href="home-2.html">Modern Home</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center justify-content-center mt-3 mt-lg-0 gap-3 flex-column flex-lg-row">
+                    <div class="d-flex gap-2 order-1 order-lg-2">
+                        <button class="btn nav-btn" id="theme-toggle" title="Toggle Theme"><i class="bi bi-sun-fill"></i></button>
+                        <button class="btn nav-btn" id="rtl-toggle" title="Toggle RTL"><i class="bi bi-arrow-left-right"></i></button>
+                    </div>
+                    <a href="login.html" class="btn btn-premium btn-sm px-4 py-2 order-2 order-lg-1">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 2: Blog Hero -->
+    <header class="blog-hero">
+        <div class="container text-center">
+            <h5 class="text-gold mb-3 reveal">CHRONICLES OF CRAFTSMANSHIP</h5>
+            <h1 class="display-3 text-white reveal">Historical Insights & Restoration Tales</h1>
+        </div>
+    </header>
+
+    <!-- Section 3: Featured Post -->
+    <section class="bg-dark-premium pb-0">
+        <div class="container">
+            <div class="featured-card reveal">
+                <div class="row g-0">
+                    <div class="col-lg-6">
+                        <img src="assets/images/blog_flintlock.png" alt="Featured Post" class="featured-img">
+                    </div>
+                    <div class="col-lg-6 p-5 d-flex flex-column justify-content-center text-center text-lg-start">
+                        <span class="text-gold small text-uppercase fw-bold mb-2">Editor's Choice</span>
+                        <h2 class="display-5 mb-4">The Art of Flintlock Restoration: A Masterclass</h2>
+                        <p class="text-muted-text mb-4">Explore the meticulous process of restoring a 1790s flintlock mechanism, from chemical stabilization to the precision filing of missing steel components.</p>
+                        <div class="d-flex align-items-center gap-3 mt-auto">
+                            <div class="small">
+                                <span>By Elias Thorne</span> &bull; <span class="text-gold">May 05, 2026</span>
+                            </div>
+                            <a href="blog-details.html" class="btn btn-outline-premium btn-sm ms-auto">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Blog Grid -->
+    <section class="bg-dark-premium">
+        <div class="container">
+            <div class="row g-4 justify-content-md-center justify-content-lg-start">
+                <div class="col-lg-4 col-md-6 reveal">
+                    <article class="blog-card">
+                        <img src="assets/images/blog_proof_marks.png" alt="Proof Marks">
+                        <div class="p-4 flex-grow-1">
+                            <span class="text-gold small">IDENTIFICATION</span>
+                            <h4 class="mt-2">Identifying Proof Marks on 18th Century Pistols</h4>
+                            <p class="text-muted-text small">Learn how to read the hidden history stamped into the metal of your antique collection.</p>
+                        </div>
+                        <div class="p-4 border-top border-secondary-subtle">
+                            <a href="blog-details.html" class="text-gold small text-uppercase fw-bold">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 reveal">
+                    <article class="blog-card">
+                        <img src="assets/images/blog_lafayette.png" alt="Lafayette Dueling Set">
+                        <div class="p-4 flex-grow-1">
+                            <span class="text-gold small">RARE DISCOVERY</span>
+                            <h4 class="mt-2">Rare Discovery: The Lafayette Dueling Set</h4>
+                            <p class="text-muted-text small">A deep dive into the recent authentication of a legendary pair of pistols with ties to 1780s France.</p>
+                        </div>
+                        <div class="p-4 border-top border-secondary-subtle">
+                            <a href="blog-details.html" class="text-gold small text-uppercase fw-bold">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 reveal">
+                    <article class="blog-card">
+                        <img src="assets/images/blog_blueing.png" alt="Cold Blueing Warning">
+                        <div class="p-4 flex-grow-1">
+                            <span class="text-gold small">RESTORATION TIPS</span>
+                            <h4 class="mt-2">Why Cold Blueing is Killing Your Antique Value</h4>
+                            <p class="text-muted-text small">Professional advice on why modern chemical finishes are detrimental to historical integrity.</p>
+                        </div>
+                        <div class="p-4 border-top border-secondary-subtle">
+                            <a href="blog-details.html" class="text-gold small text-uppercase fw-bold">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-premium px-5">Load More Articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4.5: Unique Artifact Vault (New) -->
+    <section class="artifact-vault reveal">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="artifact-image-container">
+                        <img src="assets/images/rare_artifact_wheellock.png" alt="Rare Wheellock Pistol" class="img-fluid border border-gold shadow-lg">
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="floating-info-card text-center text-lg-start">
+                        <h5 class="text-gold mb-3">ARTIFACT OF THE MONTH</h5>
+                        <h2 class="mb-4">The 1640 Saxon Wheel-lock</h2>
+                        <p class="text-muted-text">This month, we highlight a rare masterpiece of engineering from the mid-17th century. Featuring an internal wheel-lock mechanism and intricate bone inlays depicting historical battle scenes, this piece represents the pinnacle of German craftsmanship.</p>
+                        <ul class="list-unstyled mt-4 mb-4 d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-geo-alt text-gold me-2"></i> Origin: Dresden, Saxony</li>
+                            <li class="mb-2"><i class="bi bi-calendar-check text-gold me-2"></i> Circa: 1640-1650</li>
+                            <li class="mb-2"><i class="bi bi-shield-check text-gold me-2"></i> Status: Full Restoration Complete</li>
+                        </ul>
+                        <a href="#" class="btn btn-premium w-100">View Full Provenance</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Newsletter Section -->
+    <section class="bg-dark-secondary text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 reveal">
+                    <i class="bi bi-envelope-paper text-gold display-4 mb-4"></i>
+                    <h2 class="mb-3">The Historian's Ledger</h2>
+                    <p class="text-muted-text mb-4">Join our inner circle of collectors and historians. Receive monthly insights into rare finds and restoration techniques.</p>
+                    <form class="d-flex flex-column flex-sm-row gap-2 gap-sm-0 max-width-500 mx-auto">
+                        <input type="email" class="form-control rounded-0" style="height: 52px;" placeholder="Your Email Address">
+                        <button class="btn btn-premium px-4 rounded-0 w-100 w-sm-auto" style="height: 52px; white-space: nowrap;" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 text-center-mobile">
+                <div class="col-lg-4">
+                    <a href="index.html" class="footer-logo">
+                        <i class="bi bi-shield-shaded me-2"></i>ANTIQUE ARMS
+                    </a>
+                    <p class="text-muted-text pe-lg-5">Dedicated to the preservation and restoration of historical firearms. We celebrate the artistry and craftsmanship of the past.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Latest News</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Restoration</a></li>
+                        <li><a href="services.html">Appraisals</a></li>
+                        <li><a href="services.html">Consultation</a></li>
+                        <li><a href="services.html">Consignment</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="text-muted-text">Subscribe to receive historical insights and workshop updates.</p>
+                    <form class="newsletter-form d-flex gap-2">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-premium" type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Antique Firearm Restoration & Gunsmithing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Back to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

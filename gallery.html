@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Gallery | Antique Firearm Restoration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(184, 138, 68, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            transform: translateY(20px);
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-xl fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shield-shaded me-2"></i>ANTIQUE ARMS
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="bi bi-list text-white fs-1"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center-mobile">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Classic Home</a></li>
+                            <li><a class="dropdown-item" href="home-2.html">Modern Home</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center justify-content-center mt-3 mt-lg-0 gap-3 flex-column flex-lg-row">
+                    <div class="d-flex gap-2 order-1 order-lg-2">
+                        <button class="btn nav-btn" id="theme-toggle" title="Toggle Theme"><i class="bi bi-sun-fill"></i></button>
+                        <button class="btn nav-btn" id="rtl-toggle" title="Toggle RTL"><i class="bi bi-arrow-left-right"></i></button>
+                    </div>
+                    <a href="login.html" class="btn btn-premium btn-sm px-4 py-2 order-2 order-lg-1">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section" style="height: 40vh; background-image: url('https://images.unsplash.com/photo-1594910329598-a6813350284e?q=80&w=2000');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="reveal">The Collection</h1>
+        </div>
+    </header>
+
+    <section class="bg-dark-premium">
+        <div class="container">
+            <div class="row mb-5 reveal">
+                <div class="col-12 text-center">
+                    <div class="btn-group gallery-filter-group border border-gold p-1">
+                        <button class="btn btn-outline-premium active px-md-4">All</button>
+                        <button class="btn btn-outline-premium px-md-4">Pistols</button>
+                        <button class="btn btn-outline-premium px-md-4">Rifles</button>
+                        <button class="btn btn-outline-premium px-md-4">Muskets</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-md-center justify-content-lg-start reveal">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/blog_proof_marks.png" alt="Historical Proof Marks">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Lock Mechanism</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/museum_firearm_display_1778094015845.png" alt="Museum Display">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Museum Collection</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/gunsmith_stock_crafting_1778094034693.png" alt="Stock Craftsmanship">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Stock Craftsmanship</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/rare_artifact_wheellock.png" alt="Rare Artifact Cabinet">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">The Artisan's Kit</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/engraved_pistol_grip_detail_1778094073652.png" alt="Engraving Detail">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Intricate Engraving</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/restored_dueling_pistol_case_set_1778094093250.png" alt="Presentation Case">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Presentation Case</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/antique_pistol_collection_1778085949261.png" alt="Pistol Collection">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Pistol Collection</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/before_after_gun_restoration_1778085834498.png" alt="Transformation">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Transformation</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="assets/images/vintage_rifle_restoration_1778086126974.png" alt="Vintage Rifle">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Heritage Rifle</h4>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 text-center-mobile">
+                <div class="col-lg-4">
+                    <a href="index.html" class="footer-logo">
+                        <i class="bi bi-shield-shaded me-2"></i>ANTIQUE ARMS
+                    </a>
+                    <p class="text-muted-text pe-lg-5">Dedicated to the preservation and restoration of historical firearms. We celebrate the artistry and craftsmanship of the past.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Latest News</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Restoration</a></li>
+                        <li><a href="services.html">Appraisals</a></li>
+                        <li><a href="services.html">Consultation</a></li>
+                        <li><a href="services.html">Consignment</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="text-muted-text">Subscribe to receive historical insights and workshop updates.</p>
+                    <form class="newsletter-form d-flex gap-2">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-premium" type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Antique Firearm Restoration & Gunsmithing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Back to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

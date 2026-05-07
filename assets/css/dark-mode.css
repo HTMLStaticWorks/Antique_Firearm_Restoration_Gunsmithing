@@ -1,0 +1,19 @@
+/* Dark Mode Specific Overrides */
+[data-theme="dark"] .navbar {
+    background-color: rgba(17, 17, 17, 0.95);
+}
+
+[data-theme="dark"] .premium-card {
+    background-color: #262626;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .text-muted-text {
+    color: #c7c7c7;
+}
+
+[data-theme="dark"] input, [data-theme="dark"] textarea {
+    background-color: #111111;
+    color: #ffffff;
+    border-color: rgba(184, 138, 68, 0.5);
+}
