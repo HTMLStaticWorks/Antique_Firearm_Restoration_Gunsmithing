@@ -189,15 +189,7 @@ a:hover {
     border-color: var(--accent-copper);
 }
 
-.gallery-filter-group {
-    display: inline-flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    justify-content: center;
-    max-width: 100%;
-}
+
 
 .gallery-filter-group::-webkit-scrollbar {
     display: none;
@@ -227,11 +219,45 @@ a:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
     border: 1px solid var(--accent-gold);
+    transition: var(--transition);
 }
 
-.btn-outline-premium:hover {
-    background: var(--accent-gold);
-    color: #ffffff;
+.btn-outline-premium:hover, .btn-outline-premium.active {
+    background: var(--accent-gold) !important;
+    color: #ffffff !important;
+    border-color: var(--accent-gold) !important;
+}
+
+.gallery-filter-group {
+    display: inline-flex;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.gallery-filter-group .btn {
+    border: 1px solid var(--accent-gold) !important;
+    border-right: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    border-radius: 0 !important;
+}
+
+.gallery-filter-group .btn:last-child {
+    border-right: 1px solid var(--accent-gold) !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.gallery-filter-group .btn:first-child {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.gallery-filter-group .btn.active {
+    z-index: 2;
 }
 
 /* Sections */
@@ -439,7 +465,7 @@ footer {
 .newsletter-form .form-control {
     background: transparent;
     border: 1px solid var(--border-color);
-    color: #fff;
+    color: var(--text-color);
     border-radius: 0;
     height: 48px;
     flex: 1;
@@ -754,16 +780,16 @@ footer {
 
 /* Form Controls */
 .form-control {
-    background-color: var(--secondary-bg);
+    background-color: var(--secondary-bg) !important;
     border: 1px solid var(--border-color);
-    color: var(--text-color);
+    color: var(--text-color) !important;
     border-radius: 0;
     transition: var(--transition);
 }
 .form-control:focus {
-    background-color: var(--secondary-bg);
+    background-color: var(--secondary-bg) !important;
     border-color: var(--accent-gold);
-    color: var(--text-color);
+    color: var(--text-color) !important;
     box-shadow: none;
 }
 .form-control::placeholder {
