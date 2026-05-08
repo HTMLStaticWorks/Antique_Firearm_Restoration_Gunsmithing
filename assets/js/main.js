@@ -88,20 +88,61 @@ document.addEventListener('DOMContentLoaded', function() {
     revealOnScroll(); // Initial check
 
     // Back to Top Logic
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
-        });
+    let backToTop = document.getElementById('backToTop');
+    
+    // Inject button if not present in HTML
+    if (!backToTop) {
+        backToTop = document.createElement('button');
+        backToTop.id = 'backToTop';
+        backToTop.className = 'back-to-top';
+        backToTop.title = 'Back to Top';
+        backToTop.innerHTML = '<i class="bi bi-arrow-up"></i>';
+        document.body.appendChild(backToTop);
+    }
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Gallery Filtering Logic
+    const filterButtons = document.querySelectorAll('.gallery-filter-group .btn');
+    const filterItems = document.querySelectorAll('.gallery-filter-item');
+
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                filterItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
             });
         });
     }

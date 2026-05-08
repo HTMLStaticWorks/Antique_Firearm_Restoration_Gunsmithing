@@ -18,7 +18,8 @@
         }
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 250px;
+            object-fit: cover;
             transition: var(--transition);
         }
         .gallery-overlay {
@@ -42,6 +43,9 @@
         }
         .gallery-item:hover img {
             transform: scale(1.1);
+        }
+        .gallery-filter-item {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -96,92 +100,106 @@
             <div class="row mb-5 reveal">
                 <div class="col-12 text-center">
                     <div class="btn-group gallery-filter-group border border-gold p-1">
-                        <button class="btn btn-outline-premium active px-md-4">All</button>
-                        <button class="btn btn-outline-premium px-md-4">Pistols</button>
-                        <button class="btn btn-outline-premium px-md-4">Rifles</button>
-                        <button class="btn btn-outline-premium px-md-4">Muskets</button>
+                        <button class="btn btn-outline-premium active px-md-4" data-filter="all">All</button>
+                        <button class="btn btn-outline-premium px-md-4" data-filter="pistols">Pistols</button>
+                        <button class="btn btn-outline-premium px-md-4" data-filter="rifles">Rifles</button>
+                        <button class="btn btn-outline-premium px-md-4" data-filter="muskets">Muskets</button>
                     </div>
                 </div>
             </div>
             
-            <div class="row g-4 justify-content-md-center justify-content-lg-start reveal">
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-item">
-                        <img src="assets/images/blog_proof_marks.png" alt="Historical Proof Marks">
-                        <div class="gallery-overlay">
-                            <h4 class="text-dark">Lock Mechanism</h4>
-                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-item">
-                        <img src="assets/images/museum_firearm_display_1778094015845.png" alt="Museum Display">
-                        <div class="gallery-overlay">
-                            <h4 class="text-dark">Museum Collection</h4>
-                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-item">
-                        <img src="assets/images/gunsmith_stock_crafting_1778094034693.png" alt="Stock Craftsmanship">
-                        <div class="gallery-overlay">
-                            <h4 class="text-dark">Stock Craftsmanship</h4>
-                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-item">
-                        <img src="assets/images/rare_artifact_wheellock.png" alt="Rare Artifact Cabinet">
-                        <div class="gallery-overlay">
-                            <h4 class="text-dark">The Artisan's Kit</h4>
-                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-item">
-                        <img src="assets/images/engraved_pistol_grip_detail_1778094073652.png" alt="Engraving Detail">
-                        <div class="gallery-overlay">
-                            <h4 class="text-dark">Intricate Engraving</h4>
-                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-item">
-                        <img src="assets/images/restored_dueling_pistol_case_set_1778094093250.png" alt="Presentation Case">
-                        <div class="gallery-overlay">
-                            <h4 class="text-dark">Presentation Case</h4>
-                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
+            <div class="row g-4 gallery-grid reveal">
+                <!-- Pistols -->
+                <div class="col-lg-4 col-md-6 gallery-filter-item pistols">
                     <div class="gallery-item">
                         <img src="assets/images/antique_pistol_collection_1778085949261.png" alt="Pistol Collection">
                         <div class="gallery-overlay">
-                            <h4 class="text-dark">Pistol Collection</h4>
+                            <h4 class="text-dark">18th Century Flintlocks</h4>
+                            <p class="text-dark small px-3">Expertly restored flintlock pair with silver inlay.</p>
                             <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 gallery-filter-item pistols">
                     <div class="gallery-item">
-                        <img src="assets/images/before_after_gun_restoration_1778085834498.png" alt="Transformation">
+                        <img src="assets/images/restored_dueling_pistol_case_set_1778094093250.png" alt="Dueling Pistols">
                         <div class="gallery-overlay">
-                            <h4 class="text-dark">Transformation</h4>
+                            <h4 class="text-dark">Dueling Pistol Set</h4>
+                            <p class="text-dark small px-3">Cased presentation set from the Napoleonic era.</p>
                             <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 gallery-filter-item pistols">
+                    <div class="gallery-item">
+                        <img src="assets/images/engraved_pistol_grip_detail_1778094073652.png" alt="Engraved Pistol">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Pocket Revolver</h4>
+                            <p class="text-dark small px-3">Intricately engraved early civilian sidearm.</p>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rifles -->
+                <div class="col-lg-4 col-md-6 gallery-filter-item rifles">
                     <div class="gallery-item">
                         <img src="assets/images/vintage_rifle_restoration_1778086126974.png" alt="Vintage Rifle">
                         <div class="gallery-overlay">
-                            <h4 class="text-dark">Heritage Rifle</h4>
+                            <h4 class="text-dark">Long Range Sporting Rifle</h4>
+                            <p class="text-dark small px-3">Precision rifling restoration for accurate historical fire.</p>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gallery-filter-item rifles">
+                    <div class="gallery-item">
+                        <img src="assets/images/gunsmith_stock_crafting_1778094034693.png" alt="Stock Detail">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Pennsylvania Longrifle</h4>
+                            <p class="text-dark small px-3">Tiger maple stock with custom brass patchbox.</p>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gallery-filter-item rifles">
+                    <div class="gallery-item">
+                        <img src="assets/images/restoration_service_detail_1778085747672.png" alt="Rifle Action">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Heritage Carbine</h4>
+                            <p class="text-dark small px-3">Complete action rebuild and metal conservation.</p>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Muskets -->
+                <div class="col-lg-4 col-md-6 gallery-filter-item muskets">
+                    <div class="gallery-item">
+                        <img src="assets/images/museum_firearm_display_1778094015845.png" alt="Musket Display">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">Brown Bess Musket</h4>
+                            <p class="text-dark small px-3">Standard issue British infantry musket, fully functional.</p>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gallery-filter-item muskets">
+                    <div class="gallery-item">
+                        <img src="assets/images/rare_artifact_wheellock.png" alt="Wheellock">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">German Wheellock</h4>
+                            <p class="text-dark small px-3">Rare 16th-century mechanical marvel preserved.</p>
+                            <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gallery-filter-item muskets">
+                    <div class="gallery-item">
+                        <img src="assets/images/blog_proof_marks.png" alt="Musket Proofs">
+                        <div class="gallery-overlay">
+                            <h4 class="text-dark">French Charleville</h4>
+                            <p class="text-dark small px-3">Authentic proof mark preservation on barrel breech.</p>
                             <a href="#" class="btn btn-dark btn-sm mt-2">View Details</a>
                         </div>
                     </div>
@@ -235,7 +253,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Antique Firearm Restoration & Gunsmithing. All Rights Reserved.</p>
+                <p>&copy; 2026 Antique Firearm Restoration & Gunsmithing. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
